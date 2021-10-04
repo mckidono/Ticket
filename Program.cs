@@ -17,13 +17,13 @@ namespace Ticket
 
             
             string input="";
+            
+            do{
             Console.WriteLine("Enter 1 to read all tickets");
             Console.WriteLine("Enter 2 to write a new line");
             Console.WriteLine("Enter 3 to Quit");
                             
             input= Console.ReadLine();
-            do{
-            
 
             if (input=="1"){
                 using (StreamReader sr=new StreamReader(FilePath)){
@@ -33,7 +33,7 @@ namespace Ticket
                     }                   
                 }
             }
-            else {      
+            else if(input=="2"){      
                 Ticket ticket;                        
                 Console.Write("Enter in ID>");
                 string ID = Console.ReadLine();

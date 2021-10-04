@@ -20,9 +20,8 @@ namespace Ticket
         {
             try
             {
-                ticket.ticketId = Tickets.Max(m => m.ticketId) + 1;
                 StreamWriter sw = new StreamWriter(filePath, true);
-                sw.WriteLine($"{ticket.ticketId},{ticket.Summary},{ticket.Status},{ticket.Priority},{ticket.Submitter},{ticket.Assigned},{ticket.Watching}");
+                sw.WriteLine($"{ticket.ID},{ticket.Summary},{ticket.Status},{ticket.Priority},{ticket.Submitter},{ticket.Assigned},{ticket.Watching}");
                 sw.Close();
                 Tickets.Add(ticket);
                 logger.Info("Ticket id {Id} added", ticket.ticketId);
