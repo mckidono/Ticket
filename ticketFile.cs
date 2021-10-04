@@ -14,18 +14,7 @@ namespace Ticket
 
         public TicketFile(string filePath){
             this.filePath=filePath;
-            Tickets = new List<Ticket>();
-
-            try{
-                using(StreamReader sr= new StreamReader(filePath)){
-                    sr.ReadLine();
-                    while(!sr.EndOfStream){
-                        Ticket ticket;
-                    }
-                }
-            }catch{
-
-            }
+            Tickets = new List<Ticket>();          
         }
         public void AddTicket(Ticket ticket)
         {
