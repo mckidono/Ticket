@@ -10,7 +10,7 @@ namespace Ticket
     {
         public string filePath { get; set;}
         public List<Ticket> Tickets {get; set;}
-//        private static NLog.Logger logger = NLogBuilder.ConfigureNLog(Directory.GetCurrentDirectory() + "\\nlog.config").GetCurrentClassLogger();
+        private static NLog.Logger logger = NLogBuilder.ConfigureNLog(Directory.GetCurrentDirectory() + "\\nlog.config").GetCurrentClassLogger();
 
         public TicketFile(string filePath){
             this.filePath=filePath;
@@ -20,12 +20,28 @@ namespace Ticket
                 using(StreamReader sr= new StreamReader(filePath)){
                     sr.ReadLine();
                     while(!sr.EndOfStream){
-    //                    ticket ticket = new ticket();
+                        Ticket ticket;
                     }
                 }
             }catch{
 
             }
         }
+        public void AddTicket(Ticket ticket)
+        {
+            try
+            {
+                ticket.ticketId = Tickets.Max(m => m.ticketId) + 1;
+                StreamWriter sw = new StreamWriter(filePath, true);
+                sw.WriteLine($"{ticket.ticketId},{ticket.Summary},{ticket.Status},{ticket.Priority},{ticket.Submitter},{ticket.Assigned},{ticket.Watching}");
+                sw.Close();
+                Tickets.Add(ticket);
+                logger.Info("Ticket id {Id} added", ticket.ticketId);
+            } 
+            catch(Exception ex)
+            {
+                logger.Error(ex.Message);
+            }
     }
+}
 }

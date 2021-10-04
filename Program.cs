@@ -38,6 +38,7 @@ namespace Ticket
                 Console.Write("Enter in ID>");
                 string ID = Console.ReadLine();
                 
+                
                 Console.Write("Enter in summary>");
                 string summary = Console.ReadLine();
                 
@@ -58,6 +59,7 @@ namespace Ticket
                 string watching = Console.ReadLine();
 
                 ticket= new Ticket(ID,summary,status,priority,submitter,assigned,watching);
+                ticketFile.AddTicket(ticket);
                 }
             }while(input=="1" || input=="2");
         }
