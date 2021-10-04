@@ -10,15 +10,18 @@ namespace Ticket
         private static NLog.Logger logger = NLogBuilder.ConfigureNLog(Directory.GetCurrentDirectory() + "\\nlog.config").GetCurrentClassLogger();
         static void Main(string[] args)
         {
-            string FilePath = Directory.GetCurrentDirectory() + "\\ticket.csv";
+            
+            string FilePath = Directory.GetCurrentDirectory() + "\\Ticket.csv";
+            
+            TicketFile ticketFile=new TicketFile(FilePath);
 
-            ticketFile ticketFile=new ticketFile(FilePath);
-
+            
             string input="";
-//            do{
+            
+            do{
             Console.WriteLine("Enter 1 to read all tickets");
             Console.WriteLine("Enter 2 to write a new line");
-            Console.WriteLine("Enter to Quit");
+            Console.WriteLine("Enter 3 to Quit");
                             
             input= Console.ReadLine();
 
@@ -31,7 +34,7 @@ namespace Ticket
                 }
             }
             else {      
-                ticket ticket;                        
+                Ticket ticket;                        
                 Console.Write("Enter in ID>");
                 string ID = Console.ReadLine();
                 
@@ -54,9 +57,9 @@ namespace Ticket
                 Console.Write("Enter in watching>");
                 string watching = Console.ReadLine();
 
-                ticket= new ticket(ID,summary,status,priority,submitter,assigned,watching);
+                ticket= new Ticket(ID,summary,status,priority,submitter,assigned,watching);
                 }
-//            }while(input=="1" || input=="2");
+            }while(input=="1" || input=="2");
         }
     }
 }
