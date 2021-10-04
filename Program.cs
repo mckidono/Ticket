@@ -1,5 +1,5 @@
 ﻿using System;
-//using NLog.Web;
+using NLog.Web;
 using System.IO;
 using System.Collections.Generic;
 
@@ -7,16 +7,19 @@ namespace Ticket
 {
     class Program
     {
+        private static NLog.Logger logger = NLogBuilder.ConfigureNLog(Directory.GetCurrentDirectory() + "\\nlog.config").GetCurrentClassLogger();
         static void Main(string[] args)
         {
             string FilePath = Directory.GetCurrentDirectory() + "\\ticket.csv";
-            string input;
-            string ColumnID="TicketID,Summary,Status,Priority,Submitter,Assigned,Watching";
-            string firstLine="1,This is a bug ticket,Open,High,Drew Kjell,Jane Doe,Drew Kjell|John Smith|Bill Jones";
 
+            ticketFile ticketFile=new ticketFile(FilePath);
+
+            string input="";
+//            do{
             Console.WriteLine("Enter 1 to read all tickets");
             Console.WriteLine("Enter 2 to write a new line");
-
+            Console.WriteLine("Enter to Quit");
+                            
             input= Console.ReadLine();
 
             if (input=="1"){
@@ -27,51 +30,33 @@ namespace Ticket
                     }                   
                 }
             }
-            else {
-                string combined =""; 
-                string[] newRow = new string[7];
+            else {      
+                ticket ticket;                        
                 Console.Write("Enter in ID>");
                 string ID = Console.ReadLine();
-                newRow[0]=ID;
-
+                
                 Console.Write("Enter in summary>");
                 string summary = Console.ReadLine();
-                newRow[1]=summary;
+                
 
                 Console.Write("Enter in status>");
                 string status = Console.ReadLine();
-                newRow[2]=status;
-
+                
                 Console.Write("Enter in priority>");
                 string priority = Console.ReadLine();
-                newRow[3]=priority;
 
                 Console.Write("Enter in submitter>");
                 string submitter = Console.ReadLine();
-                newRow[4]=submitter;
 
                 Console.Write("Enter in assigned>");
                 string assigned = Console.ReadLine();
-                newRow[5]=assigned;
 
                 Console.Write("Enter in watching>");
                 string watching = Console.ReadLine();
-                newRow[6]=watching;
 
-                using(StreamWriter sw = new StreamWriter(FilePath)){
-                    sw.WriteLine(ColumnID);
-                    sw.WriteLine(firstLine);
-
-                    foreach(var index in newRow){
-                        combined += index;
-                        combined += ",";
-                    }
-                    if (combined.Length>1){
-                        combined= combined.Substring(0, combined.Length-1);
-                    }
-                    sw.Write(combined);
+                ticket= new ticket(ID,summary,status,priority,submitter,assigned,watching);
                 }
-            }
+//            }while(input=="1" || input=="2");
         }
     }
 }

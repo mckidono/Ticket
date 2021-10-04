@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\School\\newTicket\\Ticket\\Ticket.csproj": {}
+    "D:\\School\\newTicket\\Ticket\\Ticket.csproj": {}
   },
   "projects": {
-    "d:\\School\\newTicket\\Ticket\\Ticket.csproj": {
+    "D:\\School\\newTicket\\Ticket\\Ticket.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\School\\newTicket\\Ticket\\Ticket.csproj",
+        "projectUniqueName": "D:\\School\\newTicket\\Ticket\\Ticket.csproj",
         "projectName": "Ticket",
-        "projectPath": "d:\\School\\newTicket\\Ticket\\Ticket.csproj",
+        "projectPath": "D:\\School\\newTicket\\Ticket\\Ticket.csproj",
         "packagesPath": "C:\\Users\\Donovan\\.nuget\\packages\\",
-        "outputPath": "d:\\School\\newTicket\\Ticket\\obj\\",
+        "outputPath": "D:\\School\\newTicket\\Ticket\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Donovan\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -38,13 +38,9 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
-            "NLog.Config": {
+            "NLog.Web.AspNetCore": {
               "target": "Package",
-              "version": "[4.7.11, )"
-            },
-            "NLog.Web": {
-              "target": "Package",
-              "version": "[4.14.0, )"
+              "version": "[4.9.3, )"
             }
           },
           "imports": [
